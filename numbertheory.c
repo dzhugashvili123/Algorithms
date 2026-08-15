@@ -33,8 +33,16 @@ long int fast_exponentiation(int x, int power){
 
 int fast_modular_exponentiation(int a, int n, int m){
 	//We are calculation a^n mod m
+	int rem = 1;
+	int a_mod_m = a%m;
+	while( n > 0){
+		if( n%2 == 1) rem = (rem * a_mod_m) % m;
+		a_mod_m = (a_mod_m * a_mod_m) % m;
+		n = n >> 1;
+	}
+	return rem;
 }
 
 int main(){
-	printf("%ld", fast_exponentiation(3, 4));
+	printf("%d", fast_modular_exponentiation(7, 11, 5));
 }
