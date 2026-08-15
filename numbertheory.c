@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
 int gcd(int a, int b){
 	if( a < 1 || b < 1){
@@ -13,6 +14,16 @@ int gcd(int a, int b){
 	}
 
 	return a;
+}
+
+int prime_checking(int n){
+	//returns 1 if prime, 0 else
+	if( n == 1) return 0;	//1 is neither prime nor composite
+	int sqrt_n = sqrt(n);
+	for(int i=2; i <= sqrt_n; i++){
+		if( n%i == 0)	return 0;
+	}
+	return 1;
 }
 
 long int fast_exponentiation(int x, int power){
