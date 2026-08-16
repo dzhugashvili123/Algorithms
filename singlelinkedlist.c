@@ -84,5 +84,32 @@ void traverse(struct node **HEAD){
 	}
 }
 
+void delete_from_beginning(struct node **HEAD){
+	if(*HEAD == NULL){
+		printf("Empty list"); return;
+	}
+	else if( (*HEAD) -> next == NULL){
+		free(*HEAD); *HEAD = NULL; return;
+	}
+	struct node *node = *HEAD;
+	*HEAD = node->next;
+	free(node);
+}
+
+void delete_from_end(struct node **HEAD){	
+	if(*HEAD == NULL){
+		printf("Empty list"); return;
+	}
+	else if( (*HEAD)->next == NULL){
+		free(*HEAD); *HEAD = NULL; return;
+	}
+	struct node *node = *HEAD;
+	while((node->next)->next != NULL)
+		node = node->next;
+
+	free(node->next);
+	node->next = NULL;
+}
+
 int main(){
 }
