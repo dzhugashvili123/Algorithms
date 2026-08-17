@@ -30,7 +30,7 @@ int main(){
 	insertion_sort( arr, sizeof(arr)/sizeof(int));
 	
 	printf("Sorted array - ");
-	//printing elements
+	//Printing elements
 	for(int i=0; i<(sizeof(arr)/sizeof(int)); i++)
 		printf("%d  ", arr[i]);
 	
