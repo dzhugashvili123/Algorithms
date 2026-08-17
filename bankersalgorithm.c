@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int less_than_all_resources(int *procNeed, int *available, int n_resources){
-	//arg1 is need of 1 process, i.e. &(NEED[i]). arg2 is number of resources
+	//arg1 is need of 1 process, i.e. NEED[i]. arg2 is number of resources
 	//returns 1 if all of needs of process i are less than available, else 0
 
 	for(int i=0; i<n_resources; i++){
