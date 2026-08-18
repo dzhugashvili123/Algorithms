@@ -111,5 +111,18 @@ void delete_from_end(struct node **HEAD){
 	node->next = NULL;
 }
 
+void reverse_list(struct node **HEAD){
+	struct node *prev = NULL;
+	struct node *curr = *HEAD;
+
+	while(curr != NULL){
+		struct node *next_node = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next_node;
+	}
+	*HEAD = prev;
+}
+
 int main(){
 }
