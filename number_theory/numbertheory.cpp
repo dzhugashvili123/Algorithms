@@ -1,10 +1,10 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
 
 int gcd(int a, int b){
 	if( a < 1 || b < 1){
-		printf("Negative numbers in GCD fucntion"); exit(1);
+		std::cout<< "Negative numbers in GCD fucntion"<< std::endl; exit(1);
 	}
 	int rem;
 	while( b>0){
@@ -30,7 +30,7 @@ long int fast_exponentiation(int x, int power){
 	long int product = 1;
 	if( x == 0 && power != 0) return 0;
 	else if( x == 0 && power == 0){
-		printf("0^0 is not mathematically defined"); exit(1);
+		std::cout<< "0^0 is not mathematically defined"<< std::endl; exit(1);
 	}
 	else if( power == 0) return 1;
 
@@ -55,5 +55,5 @@ int fast_modular_exponentiation(int a, int n, int m){
 }
 
 int main(){
-	printf("%d", fast_modular_exponentiation(7, 11, 5));
+	std::cout<< fast_modular_exponentiation(7, 11, 5)<< std::endl;
 }

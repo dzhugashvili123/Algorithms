@@ -1,7 +1,7 @@
 //Send the array as command line arguments
 
-#include<stdio.h>
-#include<stdlib.h>
+#include<iostream>
+#include<cstdlib>
 
 void swap(int *x, int *y){
         int temp = *x;
@@ -28,10 +28,10 @@ int main(int argc, char **argv){
 
         int arr[n];
         for(int i=1; i<argc; i++)
-                arr[i-1] = atoi(argv[i]);
+                arr[i-1] = std::atoi(argv[i]);
 
         insertion_sort(arr, sizeof(arr)/sizeof(int));
-        printf("Sorted array - ");
+        std::cout<< "Sorted array - ";
         for(int i=0; i<n; i++)
-                printf("%d  ", arr[i]);
+                std::cout<< arr[i]<< "  ";
 }

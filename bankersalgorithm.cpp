@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<iostream>
 
 int less_than_all_resources(int *procNeed, int *available, int n_resources){
 	//arg1 is need of 1 process, i.e. NEED[i]. arg2 is number of resources
@@ -14,27 +14,27 @@ int main(){
 	int n_proc = -1, n_resources = -1;
 
 	while( n_proc<1){
-		printf("Enter number of processes(>=1) - "); scanf("%d", &n_proc);
+		std::cout<< "Enter number of processes(>=1) - "; std::cin>>n_proc;
 	}
 	while( n_resources<1){
-		printf("Enter number of different types of resources(>=1) - "); scanf("%d", &n_resources);
+		std::cout<< "Enter number of different types of resources(>=1) - "; std::cin>>n_resources;
 	}
 	int available[n_resources];
-	printf("Enter the total number of instances of resources - ");
+	std::cout<< "Enter the total number of instances of resources - ";
 	for( int i=0; i<n_resources; i++)
-		scanf("%d", &available[i]);
-	printf("\n");
+		std::cin>>available[i];
+	std::cout<< "\n";
 
 	int ALLOC[n_proc][n_resources], MAX[n_proc][n_resources], NEED[n_proc][n_resources];
-	printf("Enter the allocation matrix - \n");
+	std::cout<< "Enter the allocation matrix - "<< std::endl;
 	for( int i=0; i<n_proc; i++)
 		for(int j=0; j<n_resources; j++)
-			scanf("%d", &ALLOC[i][j]);
+			std::cin>> ALLOC[i][j];
 	
-	printf("\nEnter the maximum need matrix - \n");
+	std::cout<< "\nEnter the maximum need matrix - "<< std::endl;
 	for( int i=0; i<n_proc; i++)
 		for(int j=0; j<n_resources; j++)
-			scanf("%d", &MAX[i][j]);
+			std::cin>> MAX[i][j];
 
 	//Calculate the need matrix
 	for( int i=0; i<n_proc; i++)
@@ -55,7 +55,7 @@ int main(){
 	for( int i=0; i<n_proc; i++)	//Setting the process_finished flag to 0 for all processes
 		process_finished[i] = 0;
 
-	for( int try=0; try<n_proc; try++){	//Upperbound on the number of tries
+	for( int _try=0; _try<n_proc; _try++){	//Upperbound on the number of tries
 		for( int i=0; i<n_proc; i++){
 			if( process_finished[i]) continue;
 			if( less_than_all_resources( NEED[i], available, n_resources)){	//NEED < available
@@ -71,12 +71,12 @@ int main(){
 	
 	//Checking if all are finished. If order_counter < n_proc, then not all processes have been finished.
 	if( order_counter != n_proc){
-		printf("Deadlock occurence detected");
+		std::cout<< "Deadlock occurence detected";
 		return 1;
 	}
 
-	printf("One possible safe sequence -");
+	std::cout<< "One possible safe sequence -";
 	for( int i=0; i<n_proc-1; i++) //Last printf should not end with ->, this is why the loop is till n_proc-1 not n_proc
-		printf(" P%d -> ", order_of_finish[i]);
-	printf(" P%d", order_of_finish[n_proc-1]);
+		std::cout<< " P"<< order_of_finish[i]<< " -> ";
+	std::cout<<" P"<< order_of_finish[n_proc-1]<< std::endl;
 }
