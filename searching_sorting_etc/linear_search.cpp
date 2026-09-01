@@ -2,12 +2,21 @@
 #include<cstdlib>
 
 int linear_search(int *arr, int n, int x){
+//Returns the index if it exists, -1 else
         int i = 0;
         while( i<n && arr[i]!=x){
                 i++;
         }
         if(i<n) return i;
         else return -1;
+}
+
+int linear_search_rec(int *arr, int beg, int last, int x){
+	if( arr[beg] == x)
+		return beg;
+	if( beg == last)
+		return -1;
+	return linear_search_rec( arr, beg+1, last, x);
 }
 
 int main(int argc, char **argv){
@@ -23,6 +32,6 @@ int main(int argc, char **argv){
 	for(int i=1; i<argc-1; i++)
 		arr[i-1] = std::atoi(argv[i]);
 
-	int result = linear_search(arr, number_of_elements,  element_to_search);
+	int result = linear_search_rec(arr, 0, number_of_elements,  element_to_search);
 	return result;
 }
